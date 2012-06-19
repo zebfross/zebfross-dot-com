@@ -22,11 +22,12 @@ Here is the directory structure
 Compile & Run
 --------------
 
+	cd zebfross-dot-com
 	nanoc
 
-The html pages will be compiled into *root_dir*/output/.  Everything in this folder should make a functioning website.  Test it out with:
+The html pages will be compiled into zebfross-dot-com/output/.  Everything in this folder should make a functioning website.  Test it out with:
 
-	cd root_dir
+	cd zebfross-dot-com
 	nanoc view &
 	wget localhost:3000
 
@@ -43,7 +44,7 @@ to
 
 	dst: "your_username@your_url.com:your_dir"
 
-Then upload the files to a web server by running the following:
+Then upload the files by running the following:
 
 	nanoc deploy --target public
 
