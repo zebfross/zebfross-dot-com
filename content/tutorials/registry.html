@@ -1,0 +1,148 @@
+--- 
+title: A New Item
+tab: Tutorials
+sidebar: registry-sidebar
+---
+
+Editing Windows Registry
+------
+
+If you ever write an application for distribution, there are some things that can be done to make your program more professional and useable.  The Windows Registry is a convenient tool for such modifications.  I am going to give an introduction to querying and editing the Registry from within a program, using C++ and Java.  To make it somewhat useful, I will show you how to add custom icons to files created by your application and how to have your program automatically opened when your files are double-clicked.
+
+Prereqs:
+    Visual Studio (2010 preferred)
+    Ability to compile C++ programs but no other C++ knowledge required
+
+**Lettuce Begin**
+
+First of all, you'll need an image icon.  I use IcoFX which works great for generating icons.  You can also use the ol' standby Microsoft Paint.  If you don't want to make an icon now, you can draw one later.  32x32 pixels is a good size.
+
+We will start with a simple program that will read and write files with your custom file extension.
+
+	#include <fstream>
+	using std::ofstream;
+	using std::ifstream;
+
+	#include <iostream>
+	using std::cin;
+	using std::cout;
+
+	#include <string>
+	using std::string;
+	using std::getline;
+
+	int main( int argsn, char **argsv )
+	{
+	  // introduce yourself
+	  cout << "Welcome to my program!\n";
+
+	  // if a filename was passed to this program,
+	  // print out the contents
+	  if (argsn > 1) {
+		cout << argsv[1] << " printed out:\n";
+		// argsv[0] is the name of this program
+		ifstream fin(argsv[1]);
+		string line;
+		getline(fin, line);
+		while (fin) {
+		  cout << line << "\n";
+		  getline(fin, line);
+		}
+		cout << "\n";
+		fin.close();
+	  }
+
+	  // ask the user for a filename print to
+	  string filename;
+	  cout << "Enter filename to write out \
+	  (w/extension): ";
+	  cin >> filename;
+	  ofstream fout(filename);
+	  fout << "This is my custom file!\n";
+	  fout.close();
+	}
+
+**Embed Icon**
+
+Not too hard, right?  I used a .zeb as my file extension, but feel free to use your own initials - as long as they aren't "docx".  Next is the fun part - embedding our icon in our executable.  I am using VS 2010 for this, but I am sure the process is similar for earlier versions of VS.  Here is the process, step by step:
+
+1. Go to File -> New -> File -> Native Resource Template
+
+2. You should be brought to an empty screen excepting a folder in the top-left corner.  Right-click anywhere on this screen and go to "Add Resource..".
+
+3. You should now see a list of possible resources to add to your project.  Click "Icon" and then click "Import..." if you created an icon earlier or click "New" if you don't have an icon. 
+
+4. Once you're finished formatting your icon, save the resource template as a 32-bit resource file with a .res extension - this is important.
+
+And you're done!  With that part anyway.  Once you rebuild your solution, your executable should have a custom icon next to it.  Cool, right?  Now we can move on to the ultra-cool part - editing the registry so that all ".zeb" files have the same icon next to them and are automatically opened by our program.
+
+We are going to write a simple installer, using Visual Studio 2010.  All our program is going to do is edit the registry and quit.  It only needs to be run once to have our project work.
+
+**Edit Registry**
+_NOTE: THE WINDOWS REGISTRY PLAYS A HUGE PART IN THE OPERATING SYSTEM, SO MISTAKES MADE HERE COULD REQUIRE REINSTALLATION OF WINDOWS_
+
+This part is done by making calls to the operating system.  Here is where a knowledge of DOS commands can come in handy.  We are first going to make our own registry entry and give it a few pieces of information.  Add this code to the beginning of your main function.
+
+	system("reg add HKCR\.zeb /ve /d zeb_auto_file");
+
+This line adds a new subkey entry to registry.  This will tell Windows that there is a new file extension it should recognize and more information can be found under the "zeb_auto_file" subkey.  Be 100% sure you aren't overwriting any other registry entries when doing this, by the way.  Next, add these lines.
+
+	system("reg add HKCR\zeb_auto_file");
+	system("reg add HKCR\zeb_auto_file\DefaultIcon /ve /d 'C:\path_to_executable\exec.exe, 0'");
+
+These lines tell Windows where to look for our icon for these files.  Since the executable holds our icon, we tell the registry where to find our executable and tell it which icon to use by telling it a number.  Since we only have one icon embedded, the number is 0 for the first entry.  Now we need to add an entry to tell Windows to open our program when these files are opened.  Add this line to your program.
+
+	system("reg add HKCR\zeb_auto_file\shell\open\command /ve /d 'C:\path_to_executable\exec.exe, %1'");
+
+If you want to do this in Java, you can embed this code in any Java program to do the exact same thing.  The code is a little more complicated since the OS can't be directly accessed with a "system" function.
+
+	public static final String ADD_FILE_EXT =
+	"reg add HKCR\.zeb /ve /d zeb_auto_file";
+
+	public static final String ADD_AUTO_FILE =
+	"reg add HKCR\zeb_auto_file";
+
+	public static final String ADD_DEFAULT_ICON =
+	"reg add HKCR\zeb_auto_file\DefaultIcon /ve /d 'C:\[path_to_executable]\exec.exe, 0'";
+
+	public static final String ADD_OPEN_COMMAND =
+	"reg add HKCR\zeb_auto_file\shell\open\command /ve /d 'C:\path_to_executable\exec.exe, %1'";
+
+	private commands ArrayList<String> commands =
+	new ArrayList();
+
+
+	commands.add(ADD_FILE_EXT);
+	commands.add(ADD_AUTO_FILE);
+	commands.add(ADD_DEFAULT_ICON);
+	commands.add(ADD_OPEN_COMMAND);
+
+	Process process = null;
+	try {
+	  for ( String command : commands ) {
+
+		// tell OS to execute command
+		process =
+		  Runtime.getRuntime().exec(command);
+
+		// wait for the command to finish
+		process.waitFor();
+
+		// garbage collection so the process
+		// doesn't hang around
+		process.destroy();
+	  }
+	} catch (Exception e) {
+
+	  System.out.println("Oops!\n");
+	  // just in case
+	  process.destroy();
+
+	} finally {
+	  // all processes should be destroyed
+	}
+
+
+**That's It!**
+
+You should be done.  Run the installer to edit the registry with whatever file extension you want.  Then port that extension over to your first executable and see what happens.  Try double clicking on one of your files; does your program open and read it automatically?  Leave me a comment with any questions you have  I look forward to getting feedback and hearing of ideas you have for creative expansion on this project.

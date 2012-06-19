@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<meta charset="utf-8" name="viewport" content="width=device-width">
+	<title>Zeb Fross - <%= @item[:title] %></title>
+	<link rel="stylesheet" type="text/css" href="/style/core.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/style/browser-detection.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/style/antiscreen.css" media="handheld, only screen and (max-width:550px)">
+	<link rel="stylesheet" type="text/css" href="/style/handheld.css" media="handheld, only screen and (max-width:550px)">
+	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/browser-detection.js"></script>
+	<script type="text/javascript" src="/js/modernizr.js"></script>
+	<script type="text/javascript" src="/js/jquery-min.js"></script>
+	<script type="text/javascript">
+		<!--
+			var noticeLang = "informal";
+			var notSupportedBrowsers = [{'os': 'Any', 'browser': 'MSIE', 'version': 6}];
+		// -->
+	</script>
+	<meta name="generator" content="nanoc 3.3.6">
+	<base target="_self" />
+  </head>
+  <body>
+	<header>
+		<div id="title-block">
+			<h1>Zeb Fross</h1>
+		</div>
+		<div id="subtitle-block">
+			<h4>| Under Construction</h4>
+		</div>
+		<nav>
+			<ul>
+			<%= get_nav_tag("Home", "/", @item[:tab]) %>
+				<ul></ul>
+			</li>
+			<%= get_nav_tag("Projects", "/projects/", @item[:tab]) %>
+				<ul>
+				<%= get_subnav_tag("Real Estate", "/projects/heatmap/", @item[:tab]) %>
+				<%= get_subnav_tag("Solitaire", "/projects/solitaire/", @item[:tab]) %>
+				<%= get_subnav_tag("Checkers", "/projects/checkers/", @item[:tab]) %>
+				<%= get_subnav_tag("SPOJ", "/projects/spoj/", @item[:tab]) %>
+				<%= get_subnav_tag("Papervision", "/projects/papervision/", @item[:tab]) %>
+				<%= get_subnav_tag("Tic-tac-toe", "/projects/ttt/", @item[:tab]) %>
+				</ul>
+			</li>
+			<%= get_nav_tag("Tutorials", "/tutorials/", @item[:tab]) %>
+				<ul></ul>
+			</li>
+			<%= get_nav_tag("Blog", "/blog/", @item[:tab]) %>
+				<ul>
+				</ul>
+			</li>
+			<%= get_nav_tag("Resume", "/resume/", @item[:tab]) %>
+				<ul></ul>
+			</li>
+			<%= get_nav_tag("About Me", "/about/", @item[:tab]) %>
+				<ul>
+				<%= get_subnav_tag("Contact", "/about/contact/", @item[:tab]) %>
+				<%= get_subnav_tag("Education", "/about/education/", @item[:tab]) %>
+				</ul>
+			</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="content">
+	<% if @item[:sidebar] %>
+		<% item = @items.detect {|val| val.path =~ /.*#{@item[:sidebar]}.*/ } %>
+		<%= item.compiled_content(:snapshot => :saved) if item %>
+	<% else %>
+		<style type="text/css">
+			#main {
+				width: 100%;
+			}
+		</style>
+	<% end %>
+	<div id="main">
+		<%= yield %>
+	</div>
+	</div>
+	<footer>
+		<div style="float: left">Copyright &copy; 2012 Zeb Fross</div>
+		<div style="float: right">
+			Generated with <a href="http://nanoc.stoneship.org/" target="blank">Nanoc</a>
+		</div>
+	</footer>
+  </body>
+</html>

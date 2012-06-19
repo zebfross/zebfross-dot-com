@@ -1,0 +1,55 @@
+--- 
+title: Tic Tac Toe
+tab: TicTacToe
+---
+
+Tic Tac Toe
+----------
+
+_Thursday, April 30, 2009_
+
+[Download .exe](/projects/resources/playttt.zip)
+
+[Download source](/projects/resources/ttt.cpp)
+
+*Description*
+
+This is a simple Tic Tac Toe game made with C++ and OpenGL.  You are the X's and the computer is the O's. Click on a box to place your X, and press the 'R' or 'C' keys to clear the board and start again. Have fun trying to beat it! 
+
+*Explanation of AI*
+
+My function for making the computer play is relatively straight
+forward. Wikipedia pointed out that in order to play a perfect
+game of Tic-Tac-Toe, you have to do the following eight things 
+in order:
+
+	1. Win if you can
+	2. Block if you can
+	3. Fork to corner your opponent
+	4. Block an opponent's fork
+	5. Play at center
+	6. Play in the opposite corner as your opponent
+	7. Play in any empty corner
+	8. Play in any empty side
+
+Now, I didn't implement all eight of these, but this was 
+definitely the basis of my programming.
+To make my computer play, I told it to do the following in order:
+
+	- If you can win, play to win
+	- If you can block, block
+	- If the opponent is planning to fork, block
+	- Three other if statements testing for forks
+	- If you can make two in a row, play as such
+	- If center is empty, play in center
+	- Play in empty corner
+	- Play in empty side
+
+So, of Wikipedia's eight items, I implement all but numbers 
+three and six.  I didn't try to do number six because I wasn't
+sure why it was a part of the list. Also, I couldn't think of an
+efficient way of doing it. I didn't even attempt to code number
+three because I thought it would have been too much work. My
+code was already getting long, so I didn't want to add another
+eight sets of if-else statements.
+

@@ -1,0 +1,44 @@
+body {
+	width: 100%;
+	min-width: 400px;
+}
+
+header {
+	height: 264px;
+}
+
+#subtitle-block {
+	display: none;
+}
+
+#title-block {
+	float: right;
+	padding-top: 90px;
+}
+
+nav {
+	width: 30%;
+	height: 100%;
+}
+
+.even {
+}
+
+nav li {
+	position: relative;
+	float: none;
+	margin: 0px;
+	
+}
+
+nav ul li li {
+	padding: 12px 0px;
+}
+
+nav ul ul {
+	position: absolute;
+	top: -11px;
+	left: 100%;
+	width: 100%;
+}
+

@@ -1,0 +1,95 @@
+body {
+    background-color: #777777;
+    font-family: Arial, Helvetica ,serif;
+    margin: auto;
+    width: 85%;
+	min-width: 550px;
+}
+header {
+    background-image: url("/images/title-texture.jpg");
+    box-shadow: 0 0 30px 5px #555555;
+    color: white;
+    height: 175px;
+    padding: 0;
+    position: relative;
+}
+#title-block {
+    float: left;
+    padding: 30px 25px 0 40px;
+}
+#subtitle-block {
+    padding: 45px 0 0;
+}
+nav {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+	z-index: 1;
+}
+nav {
+    background-color: rgb(50, 50, 50);
+	background-color: rgba(50, 50, 50, .8);
+    height: 44px;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    padding-top: 0;
+    text-align: center;
+}
+nav ul li ul {
+    margin-top: 11px;
+    background-color: rgb(50, 50, 50);
+	background-color: rgba(50, 50, 50, .9);
+    visibility: hidden;
+}
+nav ul li:hover ul {
+    visibility: visible;
+}
+nav li {
+    float: left;
+    height: 20px;
+    padding: 12px 0px 12px;
+}
+nav ul li li {
+    float: none;
+    padding: 5px 12px;
+}
+nav li:hover {
+	background-color: rgb(150, 150, 150);
+    background-color: rgba(150, 150, 150, 0.8);
+}
+nav .ui-selected {
+	background-color: rgb(150, 150, 150);
+    background-color: rgba(150, 150, 150, 0.8);
+}
+nav a, nav span {
+    color: white;
+    height: 20px;
+    text-decoration: none;
+    padding: 12px;
+}
+#content {
+    background-color: white;
+    box-shadow: 0 0 10px 5px #555555;
+    padding: 10px 25px 5px;
+}
+#main {
+    width: 68.75%;
+}
+#sidebar {
+    border-left: 1px solid;
+    float: right;
+    margin: 20px 10px 0;
+    padding: 0 25px 20px;
+    width: 15.625%;
+}
+footer {
+    background-color: black;
+    bottom: 0;
+    color: white;
+    font-size: 13px;
+    height: 20px;
+}
+
