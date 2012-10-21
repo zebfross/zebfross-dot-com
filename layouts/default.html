@@ -4,6 +4,7 @@
 	<meta charset="utf-8" name="viewport" content="width=device-width">
 	<title>Zeb Fross - <%= @item[:title] %></title>
 	<link rel="stylesheet" type="text/css" href="/style/core.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/style/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/style/browser-detection.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="/style/antiscreen.css" media="handheld, only screen and (max-width:550px)">
 	<link rel="stylesheet" type="text/css" href="/style/handheld.css" media="handheld, only screen and (max-width:550px)">
@@ -11,6 +12,10 @@
 	<script type="text/javascript" src="/js/browser-detection.js"></script>
 	<script type="text/javascript" src="/js/modernizr.js"></script>
 	<script type="text/javascript" src="/js/jquery-min.js"></script>
+	<script src="/js/bootstrap/bootstrap-alert.js"></script>
+	<script src="/js/bootstrap/bootstrap-tab.js"></script>
+	<script src="/js/bootstrap/bootstrap-button.js"></script>
+	<script src="/js/bootstrap/bootstrap-carousel.js"></script>
 	<script type="text/javascript">
 		<!--
 			var noticeLang = "informal";
@@ -22,12 +27,7 @@
   </head>
   <body>
 	<header>
-		<div id="title-block">
-			<h1>Zeb Fross</h1>
-		</div>
-		<div id="subtitle-block">
-			<h4>| Under Construction</h4>
-		</div>
+		<h1>Zeb Fross <small>| Under Construction</small></h1>
 		<nav>
 			<ul>
 			<%= get_nav_tag("Home", "/", @item[:tab]) %>
@@ -35,6 +35,8 @@
 			</li>
 			<%= get_nav_tag("Projects", "/projects/", @item[:tab]) %>
 				<ul>
+				<%= get_subnav_tag("Game", "/projects/game/", @item[:tab]) %>
+				<%= get_subnav_tag("Online Chat", "/projects/chat/", @item[:tab]) %>
 				<%= get_subnav_tag("Real Estate", "/projects/heatmap/", @item[:tab]) %>
 				<%= get_subnav_tag("Solitaire", "/projects/solitaire/", @item[:tab]) %>
 				<%= get_subnav_tag("Checkers", "/projects/checkers/", @item[:tab]) %>
@@ -55,6 +57,7 @@
 			</li>
 			<%= get_nav_tag("About Me", "/about/", @item[:tab]) %>
 				<ul>
+				<%= get_subnav_tag("Home Purchase", "/about/home/", @item[:tab]) %>
 				<%= get_subnav_tag("Contact", "/about/contact/", @item[:tab]) %>
 				<%= get_subnav_tag("Education", "/about/education/", @item[:tab]) %>
 				</ul>
@@ -78,9 +81,11 @@
 	</div>
 	</div>
 	<footer>
-		<div style="float: left">Copyright &copy; 2012 Zeb Fross</div>
-		<div style="float: right">
-			Generated with <a href="http://nanoc.stoneship.org/" target="blank">Nanoc</a>
+		<div class="row">
+			<div id="copyright" class="pull-left">Copyright &copy; 2012 Zeb Fross</div>
+			<div id="attribution" class="pull-right">
+				Generated with <a href="http://nanoc.stoneship.org/" target="blank">Nanoc</a>, and sprinkled with <a href="http://twitter.github.com/bootstrap" target="blank">Bootstrap</a> love.
+			</div>
 		</div>
 	</footer>
   </body>

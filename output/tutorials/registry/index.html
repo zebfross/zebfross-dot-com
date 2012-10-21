@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<meta charset="utf-8" name="viewport" content="width=device-width">
+	<title>Zeb Fross - A New Item</title>
+	<link rel="stylesheet" type="text/css" href="/style/core.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/style/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/style/browser-detection.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/style/antiscreen.css" media="handheld, only screen and (max-width:550px)">
+	<link rel="stylesheet" type="text/css" href="/style/handheld.css" media="handheld, only screen and (max-width:550px)">
+	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/browser-detection.js"></script>
+	<script type="text/javascript" src="/js/modernizr.js"></script>
+	<script type="text/javascript" src="/js/jquery-min.js"></script>
+	<script src="/js/bootstrap/bootstrap-alert.js"></script>
+	<script src="/js/bootstrap/bootstrap-tab.js"></script>
+	<script src="/js/bootstrap/bootstrap-button.js"></script>
+	<script src="/js/bootstrap/bootstrap-carousel.js"></script>
+	<script type="text/javascript">
+		<!--
+			var noticeLang = "informal";
+			var notSupportedBrowsers = [{'os': 'Any', 'browser': 'MSIE', 'version': 6}];
+		// -->
+	</script>
+	<meta name="generator" content="nanoc 3.3.6">
+	<base target="_self" />
+  </head>
+  <body>
+	<header>
+		<h1>Zeb Fross <small>| Under Construction</small></h1>
+		<nav>
+			<ul>
+			<li><a href='/'>Home</a>
+				<ul></ul>
+			</li>
+			<li><a href='/projects/'>Projects</a>
+				<ul>
+				<li><a href='/projects/game/'>Game</a></li>
+				<li><a href='/projects/chat/'>Online Chat</a></li>
+				<li><a href='/projects/heatmap/'>Real Estate</a></li>
+				<li><a href='/projects/solitaire/'>Solitaire</a></li>
+				<li><a href='/projects/checkers/'>Checkers</a></li>
+				<li><a href='/projects/spoj/'>SPOJ</a></li>
+				<li><a href='/projects/papervision/'>Papervision</a></li>
+				<li><a href='/projects/ttt/'>Tic-tac-toe</a></li>
+				</ul>
+			</li>
+			<li class='ui-selected'><span>Tutorials</span>
+				<ul></ul>
+			</li>
+			<li><a href='/blog/'>Blog</a>
+				<ul>
+				</ul>
+			</li>
+			<li><a href='/resume/'>Resume</a>
+				<ul></ul>
+			</li>
+			<li><a href='/about/'>About Me</a>
+				<ul>
+				<li><a href='/about/home/'>Home Purchase</a></li>
+				<li><a href='/about/contact/'>Contact</a></li>
+				<li><a href='/about/education/'>Education</a></li>
+				</ul>
+			</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="content">
+	
+		
+		
+	
+	<div id="main">
+		<h2 id="editing-windows-registry">Editing Windows Registry</h2>
+
+<p>If you ever write an application for distribution, there are some things that can be done to make your program more professional and useable.  The Windows Registry is a convenient tool for such modifications.  I am going to give an introduction to querying and editing the Registry from within a program, using C++ and Java.  To make it somewhat useful, I will show you how to add custom icons to files created by your application and how to have your program automatically opened when your files are double-clicked.</p>
+
+<p>Prereqs:
+    Visual Studio (2010 preferred)
+    Ability to compile C++ programs but no other C++ knowledge required</p>
+
+<p><strong>Lettuce Begin</strong></p>
+
+<p>First of all, you&rsquo;ll need an image icon.  I use IcoFX which works great for generating icons.  You can also use the ol&rsquo; standby Microsoft Paint.  If you don&rsquo;t want to make an icon now, you can draw one later.  32x32 pixels is a good size.</p>
+
+<p>We will start with a simple program that will read and write files with your custom file extension.</p>
+
+<pre><code>#include &lt;fstream&gt;
+using std::ofstream;
+using std::ifstream;
+
+#include &lt;iostream&gt;
+using std::cin;
+using std::cout;
+
+#include &lt;string&gt;
+using std::string;
+using std::getline;
+
+int main( int argsn, char **argsv )
+{
+  // introduce yourself
+  cout &lt;&lt; "Welcome to my program!\n";
+
+  // if a filename was passed to this program,
+  // print out the contents
+  if (argsn &gt; 1) {
+	cout &lt;&lt; argsv[1] &lt;&lt; " printed out:\n";
+	// argsv[0] is the name of this program
+	ifstream fin(argsv[1]);
+	string line;
+	getline(fin, line);
+	while (fin) {
+	  cout &lt;&lt; line &lt;&lt; "\n";
+	  getline(fin, line);
+	}
+	cout &lt;&lt; "\n";
+	fin.close();
+  }
+
+  // ask the user for a filename print to
+  string filename;
+  cout &lt;&lt; "Enter filename to write out \
+  (w/extension): ";
+  cin &gt;&gt; filename;
+  ofstream fout(filename);
+  fout &lt;&lt; "This is my custom file!\n";
+  fout.close();
+}
+</code></pre>
+
+<p><strong>Embed Icon</strong></p>
+
+<p>Not too hard, right?  I used a .zeb as my file extension, but feel free to use your own initials - as long as they aren&rsquo;t &ldquo;docx&rdquo;.  Next is the fun part - embedding our icon in our executable.  I am using VS 2010 for this, but I am sure the process is similar for earlier versions of VS.  Here is the process, step by step:</p>
+
+<ol>
+  <li>
+    <p>Go to File -&gt; New -&gt; File -&gt; Native Resource Template</p>
+  </li>
+  <li>
+    <p>You should be brought to an empty screen excepting a folder in the top-left corner.  Right-click anywhere on this screen and go to &ldquo;Add Resource..&rdquo;.</p>
+  </li>
+  <li>
+    <p>You should now see a list of possible resources to add to your project.  Click &ldquo;Icon&rdquo; and then click &ldquo;Import&hellip;&rdquo; if you created an icon earlier or click &ldquo;New&rdquo; if you don&rsquo;t have an icon. </p>
+  </li>
+  <li>
+    <p>Once you&rsquo;re finished formatting your icon, save the resource template as a 32-bit resource file with a .res extension - this is important.</p>
+  </li>
+</ol>
+
+<p>And you&rsquo;re done!  With that part anyway.  Once you rebuild your solution, your executable should have a custom icon next to it.  Cool, right?  Now we can move on to the ultra-cool part - editing the registry so that all &ldquo;.zeb&rdquo; files have the same icon next to them and are automatically opened by our program.</p>
+
+<p>We are going to write a simple installer, using Visual Studio 2010.  All our program is going to do is edit the registry and quit.  It only needs to be run once to have our project work.</p>
+
+<p><strong>Edit Registry</strong>
+<em>NOTE: THE WINDOWS REGISTRY PLAYS A HUGE PART IN THE OPERATING SYSTEM, SO MISTAKES MADE HERE COULD REQUIRE REINSTALLATION OF WINDOWS</em></p>
+
+<p>This part is done by making calls to the operating system.  Here is where a knowledge of DOS commands can come in handy.  We are first going to make our own registry entry and give it a few pieces of information.  Add this code to the beginning of your main function.</p>
+
+<pre><code>system("reg add HKCR\.zeb /ve /d zeb_auto_file");
+</code></pre>
+
+<p>This line adds a new subkey entry to registry.  This will tell Windows that there is a new file extension it should recognize and more information can be found under the &ldquo;zeb_auto_file&rdquo; subkey.  Be 100% sure you aren&rsquo;t overwriting any other registry entries when doing this, by the way.  Next, add these lines.</p>
+
+<pre><code>system("reg add HKCR\zeb_auto_file");
+system("reg add HKCR\zeb_auto_file\DefaultIcon /ve /d 'C:\path_to_executable\exec.exe, 0'");
+</code></pre>
+
+<p>These lines tell Windows where to look for our icon for these files.  Since the executable holds our icon, we tell the registry where to find our executable and tell it which icon to use by telling it a number.  Since we only have one icon embedded, the number is 0 for the first entry.  Now we need to add an entry to tell Windows to open our program when these files are opened.  Add this line to your program.</p>
+
+<pre><code>system("reg add HKCR\zeb_auto_file\shell\open\command /ve /d 'C:\path_to_executable\exec.exe, %1'");
+</code></pre>
+
+<p>If you want to do this in Java, you can embed this code in any Java program to do the exact same thing.  The code is a little more complicated since the OS can&rsquo;t be directly accessed with a &ldquo;system&rdquo; function.</p>
+
+<pre><code>public static final String ADD_FILE_EXT =
+"reg add HKCR\.zeb /ve /d zeb_auto_file";
+
+public static final String ADD_AUTO_FILE =
+"reg add HKCR\zeb_auto_file";
+
+public static final String ADD_DEFAULT_ICON =
+"reg add HKCR\zeb_auto_file\DefaultIcon /ve /d 'C:\[path_to_executable]\exec.exe, 0'";
+
+public static final String ADD_OPEN_COMMAND =
+"reg add HKCR\zeb_auto_file\shell\open\command /ve /d 'C:\path_to_executable\exec.exe, %1'";
+
+private commands ArrayList&lt;String&gt; commands =
+new ArrayList();
+
+
+commands.add(ADD_FILE_EXT);
+commands.add(ADD_AUTO_FILE);
+commands.add(ADD_DEFAULT_ICON);
+commands.add(ADD_OPEN_COMMAND);
+
+Process process = null;
+try {
+  for ( String command : commands ) {
+
+	// tell OS to execute command
+	process =
+	  Runtime.getRuntime().exec(command);
+
+	// wait for the command to finish
+	process.waitFor();
+
+	// garbage collection so the process
+	// doesn't hang around
+	process.destroy();
+  }
+} catch (Exception e) {
+
+  System.out.println("Oops!\n");
+  // just in case
+  process.destroy();
+
+} finally {
+  // all processes should be destroyed
+}
+</code></pre>
+
+<p><strong>That&rsquo;s It!</strong></p>
+
+<p>You should be done.  Run the installer to edit the registry with whatever file extension you want.  Then port that extension over to your first executable and see what happens.  Try double clicking on one of your files; does your program open and read it automatically?  Leave me a comment with any questions you have  I look forward to getting feedback and hearing of ideas you have for creative expansion on this project.</p>
+
+	</div>
+	</div>
+	<footer>
+		<div class="row">
+			<div id="copyright" class="pull-left">Copyright &copy; 2012 Zeb Fross</div>
+			<div id="attribution" class="pull-right">
+				Generated with <a href="http://nanoc.stoneship.org/" target="blank">Nanoc</a>, and sprinkled with <a href="http://twitter.github.com/bootstrap" target="blank">Bootstrap</a> love.
+			</div>
+		</div>
+	</footer>
+  </body>
+</html>

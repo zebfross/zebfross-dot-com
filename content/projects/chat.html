@@ -1,0 +1,47 @@
+--- 
+title: Test Chat Client
+tab: Online Chat
+---
+
+<script type="text/javascript" src="/js/chat.js"></script>
+<script type="text/javascript" src="/js/thrift.js"></script>
+<script type="text/javascript" src="/js/Messenger.js"></script>
+<script type="text/javascript" src="/js/chat_types.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+</script>
+
+Chat
+---------
+
+This is an online group chat program.  Tell us your name and start chatting!
+
+<div id="first">
+	What is your nickname?
+	<br />
+	<input type="text" id="nick" name="nick" />
+	<span class="btn btn-primary" onclick="registerClient()">Start Chatting!</span>
+	<div id="socketError" class="alert alert-error hidden">
+		<button class="close" data-dismiss="alert" type="button">x</button>
+		An unkown error occurred.
+	</div>
+</div>
+
+<div id="second">
+	Who's online?
+	<br />
+	<div id="userAlert"></div>
+	<div id="users_div">
+		<ul id="users">
+		</ul>
+	</div>
+	<div id="chat_container">
+		<textarea id="messages" rows="10" cols="50" readonly="readonly" value=""></textarea>
+		<br />
+		<textarea id="message" rows="2" cols="50">Type here</textarea>
+		<span class="btn" onclick="sendMessage()">Send</span>
+	</div>
+</div>
+

@@ -1,0 +1,53 @@
+--- 
+title: Game
+tab: Game
+sidebar: game-sidebar
+---
+
+<link rel="stylesheet" type="text/css" href="/style/game.css">
+<script type="text/javascript" src="/js/game_types.js"></script>
+<script type="text/javascript" src="/js/game.js"></script>
+
+<h4>This game is under construction; come back soon for a finished product.</h4>
+<div id="game1">
+	<div id="signin">
+		Start by signing in: <input id="nick" type="text" />
+		<span class="button" onclick="registerUser()">Sign In</span>
+	</div>
+	<div id="user_tabbed_area">
+		<ul id="tabs_list">
+			<li><a href="javascript:tabSwitch('#signedin_tab', '#signedin_content');" id="signedin_tab" class="active">Signed In</a></li>
+			<li><a href="javascript:tabSwitch('#inlobby_tab', '#inlobby_content');" id="inlobby_tab">In Lobby</a></li>
+		</ul>
+		
+		<div id="signedin_content" class="tab_content">
+			<ul id="signedin_list">
+		
+			</ul>
+		</div>
+		<div id="inlobby_content" class="tab_content">
+			<ul id="inlobby_list">
+
+			</ul>
+		</div>
+	</div>
+	<div id="game_div">
+		Games
+		<ul id="game_list">
+		</ul>
+		<span class="button" onclick="createGame()">Add Game</span>
+	</div>
+</div>
+
+<div id="game2" class="hidden">
+	<div id="playground">
+
+	</div>
+</div>
+
+<div id="chat_div">
+	<textarea id="messages" rows="10" cols="50" readonly="readonly" value=""></textarea>
+	<br />
+	<textarea id="message" rows="2" cols="50" hint="Type here"></textarea>
+	<span class="button" onclick="sendMessage()">Send</span>
+</div>

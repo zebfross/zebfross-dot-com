@@ -1,0 +1,127 @@
+Crashlog created at 2012-10-21 11:22:41 -0600
+
+=== MESSAGE:
+
+RuntimeError: Could not read content/js/browser-detection.js because the file is not valid UTF-8.
+
+=== COMPILATION STACK:
+
+  (empty)
+
+=== BACKTRACE:
+
+  0. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:302:in `raise_encoding_error'
+  1. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:291:in `read'
+  2. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:242:in `parse'
+  3. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:89:in `block in load_objects'
+  4. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:78:in `each'
+  5. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:78:in `map'
+  6. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:78:in `load_objects'
+  7. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/data_sources/filesystem.rb:37:in `items'
+  8. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:314:in `block in load_items'
+  9. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:313:in `each'
+  10. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:313:in `load_items'
+  11. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:247:in `load'
+  12. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:127:in `layouts'
+  13. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/compilation/compiler.rb:185:in `dependency_tracker'
+  14. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/memoization.rb:56:in `block in memoize'
+  15. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/compilation/compiler.rb:453:in `stores'
+  16. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/compilation/compiler.rb:144:in `unload'
+  17. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:278:in `unload'
+  18. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:258:in `rescue in load'
+  19. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:262:in `load'
+  20. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/compilation/compiler.rb:112:in `load'
+  21. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/compilation/compiler.rb:82:in `run'
+  22. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/base/source_data/site.rb:58:in `compile'
+  23. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/commands/compile.rb:65:in `run'
+  24. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/command_runner.rb:14:in `block in call'
+  25. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
+  26. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  27. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/command_runner.rb:13:in `call'
+  28. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command_dsl.rb:185:in `block in runner'
+  29. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command.rb:296:in `call'
+  30. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command.rb:296:in `run_this'
+  31. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command.rb:249:in `run'
+  32. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/commands/nanoc.rb:39:in `block in define'
+  33. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command.rb:296:in `call'
+  34. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command.rb:296:in `run_this'
+  35. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib/cri/command.rb:249:in `run'
+  36. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli.rb:53:in `block in run'
+  37. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
+  38. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  39. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib/nanoc/cli.rb:50:in `run'
+  40. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/bin/nanoc:19:in `<top (required)>'
+  41. /home/zeb/.rvm/gems/ruby-1.9.3-p286/bin/nanoc:19:in `load'
+  42. /home/zeb/.rvm/gems/ruby-1.9.3-p286/bin/nanoc:19:in `<main>'
+  43. /home/zeb/.rvm/gems/ruby-1.9.3-p286/bin/ruby_noexec_wrapper:14:in `eval'
+  44. /home/zeb/.rvm/gems/ruby-1.9.3-p286/bin/ruby_noexec_wrapper:14:in `<main>'
+
+=== VERSION INFORMATION:
+
+nanoc 3.4.1 © 2007-2012 Denis Defreyne.
+Running ruby 1.9.3 (2012-10-12) on i686-linux with RubyGems 1.8.24.
+
+=== SYSTEM INFORMATION:
+
+Linux zeb-System-Product-Name 3.0.0-12-generic #20-Ubuntu SMP Fri Oct 7 14:50:42 UTC 2011 i686 i686 i386 GNU/Linux
+
+=== INSTALLED GEMS:
+
+  bundler 1.2.1
+  colored 1.2
+  cri 2.3.0
+  nanoc 3.4.1
+  rake 0.9.2.2
+  rubygems-bundler 1.1.0
+  rvm 1.11.3.5
+
+=== ENVIRONMENT:
+
+COMP_WORDBREAKS => " \t\n\"'><;|&(:"
+GEM_HOME => "/home/zeb/.rvm/gems/ruby-1.9.3-p286"
+GEM_PATH => "/home/zeb/.rvm/gems/ruby-1.9.3-p286:/home/zeb/.rvm/gems/ruby-1.9.3-p286@global"
+HOME => "/home/zeb"
+IRBRC => "/home/zeb/.rvm/rubies/ruby-1.9.3-p286/.irbrc"
+LANG => "en_US.UTF-8"
+LOGNAME => "zeb"
+MAIL => "/var/mail/zeb"
+MY_RUBY_HOME => "/home/zeb/.rvm/rubies/ruby-1.9.3-p286"
+OLDPWD => "/home/zeb"
+PATH => "/usr/local/heroku/bin:/home/zeb/.rvm/gems/ruby-1.9.3-p286/bin:/home/zeb/.rvm/gems/ruby-1.9.3-p286@global/bin:/home/zeb/.rvm/rubies/ruby-1.9.3-p286/bin:/home/zeb/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+PWD => "/home/zeb/Documents/zebfross"
+RUBY_VERSION => "ruby-1.9.3-p286"
+SHELL => "/bin/bash"
+SHLVL => "1"
+SSH_CLIENT => "192.168.1.104 51819 22"
+SSH_CONNECTION => "192.168.1.104 51819 192.168.1.109 22"
+SSH_TTY => "/dev/pts/0"
+TERM => "xterm"
+USER => "zeb"
+XDG_SESSION_COOKIE => "5ee926f09d5067599c13c2b800000007-1350840108.36337-994632498"
+_ => "/home/zeb/.rvm/gems/ruby-1.9.3-p286/bin/nanoc"
+_ORIGINAL_GEM_PATH => "/home/zeb/.rvm/gems/ruby-1.9.3-p286:/home/zeb/.rvm/gems/ruby-1.9.3-p286@global"
+__array_start => "0"
+_first => "0"
+_second => "1"
+escape_flag => "1"
+rvm_bin_path => "/home/zeb/.rvm/bin"
+rvm_path => "/home/zeb/.rvm"
+rvm_prefix => "/home/zeb"
+rvm_version => "1.16.15 (stable)"
+
+=== $LOAD_PATH:
+
+  0. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib
+  1. /home/zeb/.rvm/gems/ruby-1.9.3-p286@global/gems/rubygems-bundler-1.1.0/lib
+  2. /home/zeb/.rvm/gems/ruby-1.9.3-p286@global/gems/bundler-1.2.1/lib
+  3. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/colored-1.2/lib
+  4. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/cri-2.3.0/lib
+  5. /home/zeb/.rvm/gems/ruby-1.9.3-p286/gems/nanoc-3.4.1/lib
+  6. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/site_ruby/1.9.1
+  7. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/site_ruby/1.9.1/i686-linux
+  8. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/site_ruby
+  9. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/vendor_ruby/1.9.1
+  10. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/vendor_ruby/1.9.1/i686-linux
+  11. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/vendor_ruby
+  12. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/1.9.1
+  13. /home/zeb/.rvm/rubies/ruby-1.9.3-p286/lib/ruby/1.9.1/i686-linux

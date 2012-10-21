@@ -1,0 +1,79 @@
+#playground {
+	width: 500px;
+	height: 500px;
+	background-image: url('/images/moon.jpg');
+}
+
+#game1 {
+	
+}
+
+#user_tabbed_area {
+	border: 1px solid #494e52;
+	background-color: #636d76;
+	padding: 8px;
+	width: 200px;
+}
+
+.tab_content {
+	background-color: #ffffff;
+	padding: 10px;
+	border: 1px solid #464c54;
+	margin-top: 5px;
+}
+
+#inlobby_content {
+	display: none;
+}
+
+#tabs_list {
+	margin: 0px; padding:0px;
+}
+
+#tabs_list li {
+	list-style:none;
+	display:inline;
+}
+
+#tabs_list li a {
+	background-color: #464c54;
+	color: #ffebb5;
+	padding: 5px;
+	text-decoration:none;
+	text-transform: uppercase;
+	border: 1px solid #464c54;
+}
+
+#tabs_list li a:hover {
+	background-color: #2f343a;
+	border-color: #2f343a;
+}
+
+#tabs_list li a.active {
+	background-color: #ffffff;
+	color: #282e32;
+	border: 1px solid #464c54;
+	border-bottom: !px solid #ffffff;
+}
+
+#game_list {
+	list-style: none;
+}
+
+#game_list li.active {
+	border-left: 5px solid #3333ff
+}
+
+#game_list li.open {
+	border-left: 5px solid #33ff33
+}
+
+#game_div {
+	widtH: 300px;
+	margin: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
