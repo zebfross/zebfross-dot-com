@@ -27,7 +27,7 @@
   </head>
   <body>
 	<header>
-		<h1>Zeb Fross <small>| Under Construction</small></h1>
+		<h1>Zeb Fross <small>| Software Enthusiast</small></h1>
 		<nav>
 			<ul>
 			<li><a href='/'>Home</a>
@@ -35,9 +35,9 @@
 			</li>
 			<li><a href='/projects/'>Projects</a>
 				<ul>
-				<li><a href='/projects/game/'>Game</a></li>
 				<li><a href='/projects/chat/'>Online Chat</a></li>
 				<li><a href='/projects/heatmap/'>Real Estate</a></li>
+				<li><a href='/projects/fart_judge/'>The Fart Judge</a></li>
 				<li><a href='/projects/solitaire/'>Solitaire</a></li>
 				<li><a href='/projects/checkers/'>Checkers</a></li>
 				<li><a href='/projects/spoj/'>SPOJ</a></li>
@@ -48,16 +48,11 @@
 			<li class='ui-selected'><span>Tutorials</span>
 				<ul></ul>
 			</li>
-			<li><a href='/blog/'>Blog</a>
-				<ul>
-				</ul>
-			</li>
 			<li><a href='/resume/'>Resume</a>
 				<ul></ul>
 			</li>
 			<li><a href='/about/'>About Me</a>
 				<ul>
-				<li><a href='/about/home/'>Home Purchase</a></li>
 				<li><a href='/about/contact/'>Contact</a></li>
 				<li><a href='/about/education/'>Education</a></li>
 				</ul>
@@ -81,7 +76,7 @@
 
 <p><strong>Lettuce Begin</strong></p>
 
-<p>First of all, you&rsquo;ll need an image icon.  I use IcoFX which works great for generating icons.  You can also use the ol&rsquo; standby Microsoft Paint.  If you don&rsquo;t want to make an icon now, you can draw one later.  32x32 pixels is a good size.</p>
+<p>First of all, you’ll need an image icon.  I use IcoFX which works great for generating icons.  You can also use the ol’ standby Microsoft Paint.  If you don’t want to make an icon now, you can draw one later.  32x32 pixels is a good size.</p>
 
 <p>We will start with a simple program that will read and write files with your custom file extension.</p>
 
@@ -131,24 +126,24 @@ int main( int argsn, char **argsv )
 
 <p><strong>Embed Icon</strong></p>
 
-<p>Not too hard, right?  I used a .zeb as my file extension, but feel free to use your own initials - as long as they aren&rsquo;t &ldquo;docx&rdquo;.  Next is the fun part - embedding our icon in our executable.  I am using VS 2010 for this, but I am sure the process is similar for earlier versions of VS.  Here is the process, step by step:</p>
+<p>Not too hard, right?  I used a .zeb as my file extension, but feel free to use your own initials - as long as they aren’t “docx”.  Next is the fun part - embedding our icon in our executable.  I am using VS 2010 for this, but I am sure the process is similar for earlier versions of VS.  Here is the process, step by step:</p>
 
 <ol>
   <li>
     <p>Go to File -&gt; New -&gt; File -&gt; Native Resource Template</p>
   </li>
   <li>
-    <p>You should be brought to an empty screen excepting a folder in the top-left corner.  Right-click anywhere on this screen and go to &ldquo;Add Resource..&rdquo;.</p>
+    <p>You should be brought to an empty screen excepting a folder in the top-left corner.  Right-click anywhere on this screen and go to “Add Resource..”.</p>
   </li>
   <li>
-    <p>You should now see a list of possible resources to add to your project.  Click &ldquo;Icon&rdquo; and then click &ldquo;Import&hellip;&rdquo; if you created an icon earlier or click &ldquo;New&rdquo; if you don&rsquo;t have an icon. </p>
+    <p>You should now see a list of possible resources to add to your project.  Click “Icon” and then click “Import…” if you created an icon earlier or click “New” if you don’t have an icon. </p>
   </li>
   <li>
-    <p>Once you&rsquo;re finished formatting your icon, save the resource template as a 32-bit resource file with a .res extension - this is important.</p>
+    <p>Once you’re finished formatting your icon, save the resource template as a 32-bit resource file with a .res extension - this is important.</p>
   </li>
 </ol>
 
-<p>And you&rsquo;re done!  With that part anyway.  Once you rebuild your solution, your executable should have a custom icon next to it.  Cool, right?  Now we can move on to the ultra-cool part - editing the registry so that all &ldquo;.zeb&rdquo; files have the same icon next to them and are automatically opened by our program.</p>
+<p>And you’re done!  With that part anyway.  Once you rebuild your solution, your executable should have a custom icon next to it.  Cool, right?  Now we can move on to the ultra-cool part - editing the registry so that all “.zeb” files have the same icon next to them and are automatically opened by our program.</p>
 
 <p>We are going to write a simple installer, using Visual Studio 2010.  All our program is going to do is edit the registry and quit.  It only needs to be run once to have our project work.</p>
 
@@ -160,7 +155,7 @@ int main( int argsn, char **argsv )
 <pre><code>system("reg add HKCR\.zeb /ve /d zeb_auto_file");
 </code></pre>
 
-<p>This line adds a new subkey entry to registry.  This will tell Windows that there is a new file extension it should recognize and more information can be found under the &ldquo;zeb_auto_file&rdquo; subkey.  Be 100% sure you aren&rsquo;t overwriting any other registry entries when doing this, by the way.  Next, add these lines.</p>
+<p>This line adds a new subkey entry to registry.  This will tell Windows that there is a new file extension it should recognize and more information can be found under the “zeb_auto_file” subkey.  Be 100% sure you aren’t overwriting any other registry entries when doing this, by the way.  Next, add these lines.</p>
 
 <pre><code>system("reg add HKCR\zeb_auto_file");
 system("reg add HKCR\zeb_auto_file\DefaultIcon /ve /d 'C:\path_to_executable\exec.exe, 0'");
@@ -171,7 +166,7 @@ system("reg add HKCR\zeb_auto_file\DefaultIcon /ve /d 'C:\path_to_executable\exe
 <pre><code>system("reg add HKCR\zeb_auto_file\shell\open\command /ve /d 'C:\path_to_executable\exec.exe, %1'");
 </code></pre>
 
-<p>If you want to do this in Java, you can embed this code in any Java program to do the exact same thing.  The code is a little more complicated since the OS can&rsquo;t be directly accessed with a &ldquo;system&rdquo; function.</p>
+<p>If you want to do this in Java, you can embed this code in any Java program to do the exact same thing.  The code is a little more complicated since the OS can’t be directly accessed with a “system” function.</p>
 
 <pre><code>public static final String ADD_FILE_EXT =
 "reg add HKCR\.zeb /ve /d zeb_auto_file";
@@ -220,7 +215,7 @@ try {
 }
 </code></pre>
 
-<p><strong>That&rsquo;s It!</strong></p>
+<p><strong>That’s It!</strong></p>
 
 <p>You should be done.  Run the installer to edit the registry with whatever file extension you want.  Then port that extension over to your first executable and see what happens.  Try double clicking on one of your files; does your program open and read it automatically?  Leave me a comment with any questions you have  I look forward to getting feedback and hearing of ideas you have for creative expansion on this project.</p>
 
@@ -230,7 +225,7 @@ try {
 		<div class="row">
 			<div id="copyright" class="pull-left">Copyright &copy; 2012 Zeb Fross</div>
 			<div id="attribution" class="pull-right">
-				Generated with <a href="http://nanoc.stoneship.org/" target="blank">Nanoc</a>, and sprinkled with <a href="http://twitter.github.com/bootstrap" target="blank">Bootstrap</a> love.
+				Generated by <a href="http://nanoc.stoneship.org/" target="blank">Nanoc</a>, and sprinkled with <a href="http://twitter.github.com/bootstrap" target="blank">Bootstrap</a> love.
 			</div>
 		</div>
 	</footer>

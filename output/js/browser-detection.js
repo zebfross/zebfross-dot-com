@@ -1,6 +1,6 @@
 /*
  * Browser Detection
- * © 2010 DevSlide Labs 
+ *  2010 DevSlide Labs 
  * 
  * Visit us at: www.devslide.com/labs
  */
